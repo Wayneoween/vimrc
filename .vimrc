@@ -12,23 +12,23 @@
 " }
 
 " Basic {
-		"Use vim defaults
+	"Use vim defaults
 	set nocompatible
-		"Disable filetype detection during init
+	"Disable filetype detection during init
 	filetype off
-		"Enable Syntax highlighting
+	"Enable Syntax highlighting
 	syntax enable
-		"Explicitly define xterm as environment
+	"Explicitly define xterm as environment
 	behave xterm
-		"More screen updates
+	"More screen updates
 	set ttyfast
-		"Enable modelines, secured by ciaranm/securemodelines
+	"Enable modelines, secured by ciaranm/securemodelines
 	set modeline
-		"No exec
+	"No exec
 	set secure
-		"Encoding
+	"Encoding
 	set encoding=utf-8
-		"Function of the backspace key
+	"Function of the backspace key
 	set backspace=indent,eol,start
 " }
 
@@ -55,7 +55,7 @@
 	Bundle 'nathanaelkane/vim-indent-guides'
 	Bundle 'scrooloose/nerdtree'
 	Bundle 'scrooloose/syntastic'
-	Bundle 'ciaranm/securemodelines'
+	Bundle 'tlvince/securemodelines'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
@@ -67,11 +67,11 @@
 
 " General {
 	" Backup and temporary files {
-		set backup
-		set backupdir=~/.tmp/.vimbak
-		set directory=~/.tmp/.vimtmp,.
-		set history=2048
-		set undolevels=2048
+	" 	set backup
+	" 	set backupdir=~/.tmp/.vimbak
+	" 	set directory=~/.tmp/.vimtmp,.
+	" 	set history=2048
+	" 	set undolevels=2048
 	" }
 	" Tab completion {
 		set wildmenu
@@ -79,26 +79,26 @@
 		set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 	" }
 	" Searching {
-			"Highlightsearch
+		"Highlightsearch
 		set hlsearch
-			"Start searching with the first character
+		"Start searching with the first character
 		set incsearch
-			"Ignore case
+		"Ignore case
 		set ignorecase
-			"Match case if searchstring starts with uppercase
+		"Match case if searchstring starts with uppercase
 		set smartcase
-			"Global search by default
+		"Global search by default
 		set gdefault
-			"Treat more characters as special (like in perl) when searching (e.g. . *)
+		"Treat more characters as special (like in perl) when searching (e.g. . *)
 		set magic
 	" }
 	" Spelling {
 		set spelllang=en_us ",de_de
 	" }
 	" Misc {
-			" Only one whitespace after _J_oining after a dot
+		" Only one whitespace after _J_oining after a dot
 		set nojoinspaces
-			" Disable autoselection of vim clipboard
+		" Disable autoselection of vim clipboard
 		set clipboard-=autoselect
 		set guioptions-=a
 	" }
@@ -106,44 +106,45 @@
 
 " Appearance and handling {
 	" Theme {
-			" Use a portable version of solarized (no terminal adjustments needed)
+		let g:solarized_termtrans = 1
+		" Use a portable version of solarized (no terminal adjustments needed)
 		let g:solarized_termcolors=256
-			" Set colorscheme to solarized
+		" Set colorscheme to solarized
 		colorscheme solarized
-			" Use the dark version of solarized
+		" Use the dark version of solarized
 		set background=dark
-			" Previous used colorscheme
+		" Previous used colorscheme
 		"colorscheme evening
 	" }
 	" Colors {
 		hi Search ctermbg=DarkYellow ctermfg=White
-			" Used by listchars
+		" Used by listchars
 		hi SpecialKey ctermbg=1
 
-			" Some tweaks for the solarized colorscheme
+		" Some tweaks for the solarized colorscheme
 		hi Identifier ctermfg=6 cterm=bold
 			" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
 			" Non-safe Colors, 16-Color-Term:
 			" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
 	" }
 	" Statusbar {
-			"Renaming xterm window
+		"Renaming xterm window
 		set title
-			"Don't show line numbers
+		"Don't show line numbers
 		set nonumber
-			"Always show the status bar
+		"Always show the status bar
 		set laststatus=2
 	" }
 	" Misc Handling {
-			"Always let 5 lines below and above the cursor on the screen
+		"Always let 5 lines below and above the cursor on the screen
 		set scroll=11
 		set scrolloff=5
 		set sidescroll=8
-			"Bracket matching
+		"Bracket matching
 		set showmatch
-			"Show unfinished commands
+		"Show unfinished commands
 		set showcmd
-			"No Bell
+		"No Bell
 		set noerrorbells visualbell
 	" }
 " }
@@ -153,79 +154,79 @@
 		set nolist
 		"set list listchars=tab:>.,trail:.
 		set listchars=tab:\ \ ,trail:\.
-		"set list listchars=tab:>.,trail:·
+		"set list listchars=tab:>.,trail:ï¿½
 	" }
 	" Overlong lines display {
-			"Don't do newlines automatically
+		"Don't do newlines automatically
 		set fo-=t
-			"Break the line instead of scrolling right
-		set wrap
-			"Don't stat a new line automatically break lines
-		set wrapmargin=0
-			"But continue with a mark in the next line
-		set showbreak=>>>
+		"Break the line instead of scrolling right
+		" set wrap
+		"Don't stat a new line automatically break lines
+		" set wrapmargin=0
+		"But continue with a mark in the next line
+		" set showbreak=>>>
 	" }
 	" Indention {
-			"One Tab per indentation level. 4 column wide Tabs.
-			"Intelligently detect current indention level
+		"One Tab per indentation level. 4 column wide Tabs.
+		"Intelligently detect current indention level
 		set smartindent
-			"Size of real Tabs
+		"Size of real Tabs
 		set tabstop=4
-			"Indent amount when using TAB
+		"Indent amount when using TAB
 		set softtabstop=4
-			"Indent amount when using cindent, >>, ..
+		"Indent amount when using cindent, >>, ..
 		set shiftwidth=4
-			"Do not expand tabs to spaces
+		"Do not expand tabs to spaces
 		set noexpandtab
 	" }
 	" Folding (disabled) {
-			"Disable folding completely
+		"Disable folding completely
 		"set nofoldenable
-			"Disable folding in the initial view
+		"Disable folding in the initial view
 		set foldlevel=40
-			"Make folding indent sensitive
+		"Make folding indent sensitive
 		set foldmethod=indent
 	" }
 " }
 
 " Mappings and functions {
 	" Misc {
-			"Easier escape
+		"Easier escape
 		inoremap jj <ESC>
 		inoremap ,, <ESC>
-			"Match brackets key
+		"Match brackets key
 		nnoremap <tab> %
 		vnoremap <tab> %
-			"Clear highlight
+		"Clear highlight
 		map <silent> <C-l> :silent nohl<CR>
-			"Save as root
+		"Save as root
 		cmap w!! %!sudo tee > /dev/null %
 	" }
 	" Custom Keyset {
 		let mapleader = ","
-			"Reselect just pasted content
+		"Reselect just pasted content
 		nnoremap <leader>v V`]
-			"Split Window and switch over to it
+		"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
 		nnoremap <leader>w <C-w>h<C-w>l
 	" }
 	" C&P between files via a tempfile {
-			"Copy to buffer
+		"Copy to buffer
 		vnoremap <leader>y :w! ~/.tmp/.vimbak/vimbuffer<CR>
 		nnoremap <leader>y :.w! ~/.tmp/.vimbak/vimbuffer<CR>
-			"Paste from buffer
+		"Paste from buffer
 		nnoremap <leader>p :r ~/.tmp/.vimbak/vimbuffer<CR>
 		nnoremap <leader>P :-r ~/.tmp/.vimbak/vimbuffer<CR>
 	" }
 	" Disable arrow keys by default {
-		nnoremap <up> <nop>
-		nnoremap <down> <nop>
-		nnoremap <left> <nop>
-		nnoremap <right> <nop>
-		inoremap <up> <nop>
-		inoremap <down> <nop>
-		inoremap <left> <nop>
-		inoremap <right> <nop>
+	"	nnoremap <up> <nop>
+	"	nnoremap <down> <nop>
+	"	nnoremap <left> <nop>
+	"	nnoremap <right> <nop>
+	"	inoremap <up> <nop>
+	"	inoremap <down> <nop>
+	"	inoremap <left> <nop>
+	"	inoremap <right> <nop>
 		"nnoremap j gj
 		"nnoremap k gk
 	" }
@@ -323,33 +324,31 @@
 	" Function Keys {
 		" Handling:
 		" <F2> Toggle git diff cloumn
-			map <silent> <F2> :GitGutterToggle <CR>
+		map <silent> <F2> :GitGutterToggle <CR>
 		" <L-F2> Toggle git diff line highlighting
-			map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
+		map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
 		" <F3> Toggle the arrow keys
-			map <silent> <F3> :call ToggleArrowKeys() <CR>
+		map <silent> <F3> :call ToggleArrowKeys() <CR>
 		" <L-F3> Toggle mouse mode
-			"TODO
+		"TODO
 		" <F4> Toggle paste mode
-			set pastetoggle=<F4>
+		set pastetoggle=<F4>
 		" Desing:
 		" <F5> Toggle whitespace and tab display
-			map <silent> <F5> :call ToggleList() <CR>
+		map <silent> <F5> :call ToggleList() <CR>
 		" <L-F5> Toggle visual highlighting of lines longer than 80 chars
-			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
+		map <silent> <leader><F5> :call ToggleColorColumn() <CR>
 		" <F6> Toggle line wrap
-			map <silent> <F6> :call ToggleWrap() <CR>
+		map <silent> <F6> :call ToggleWrap() <CR>
 		" <L-F6> Toggle line numbers
-			map <silent> <leader><F6> :call ToggleNumber() <CR>
+		map <silent> <leader><F6> :call ToggleNumber() <CR>
 		" <F7> Toggle background
-			map <silent> <F7> :call ToggleSolarizedBackground() <CR>
+		map <silent> <F7> :call ToggleSolarizedBackground() <CR>
 		" <F9> Toggle spell checking
-			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
 		" Functions:
-		" <F10> Paste to grave.io
-			map <F10> :w !bury -t % <CR>
 		" <F12> Display all custom keybindings
-			map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
+		map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
 	" }
 " }
 " Settings for addons {
@@ -367,6 +366,13 @@
 	" Airline {
 		 let g:airline_theme='solarized'
 	" }
+	" NERDtree {
+		 " autocmd vimenter * NERDTree
+		 " Close NERDtree with CTRL-e
+		 nnoremap <C-e> :NERDTreeToggle<CR>
+		 " Close vim if NERDtree is only window
+		 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+	" }
 " }
 
 " Conditionals {
@@ -375,10 +381,14 @@
 			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
+			au BufRead,BufNewFile *.sh set ft=haskell
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
+			au FileType sh,bash	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
+			au FileType python	set	tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+			au FileType haskell	set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
 		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
