@@ -57,6 +57,11 @@
 	Bundle 'scrooloose/syntastic'
 	Bundle 'tlvince/securemodelines'
 
+	Bundle 'vim-ruby/vim-ruby'
+	Bundle 'jelera/vim-javascript-syntax'
+	Bundle 'hail2u/vim-css3-syntax'
+	Bundle 'chase/vim-ansible-yaml'
+
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
 		echo ""
@@ -160,11 +165,11 @@
 		"Don't do newlines automatically
 		set fo-=t
 		"Break the line instead of scrolling right
-		" set wrap
+		set nowrap
 		"Don't stat a new line automatically break lines
-		" set wrapmargin=0
+		set wrapmargin=0
 		"But continue with a mark in the next line
-		" set showbreak=>>>
+		set showbreak=>>>
 	" }
 	" Indention {
 		"One Tab per indentation level. 4 column wide Tabs.
@@ -384,14 +389,14 @@
 			au BufRead,BufNewFile *.sh set ft=haskell
 		" }
 		" Filetype settings {
-			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-			au FileType sh,bash	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
-			au FileType python	set	tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-			au FileType haskell	set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
-		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
+			au FileType ruby,yaml	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType perl		set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
+			au FileType sh,bash		set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
+			au FileType python		set	tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+			au FileType haskell		set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
+			au FileType arduino		set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+		    au FileType html		set tabstop=4 shiftwidth=4 nosmarttab autoindent
+		    au FileType cpp			set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
