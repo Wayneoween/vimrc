@@ -392,6 +392,7 @@
 		" }
 		" Filetype settings {
 			au FileType eruby,ruby,yaml	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType javascript		set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 			au FileType perl			set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
 			au FileType sh,bash			set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
 			au FileType python			set	tabstop=4 softtabstop=4 shiftwidth=4 expandtab
