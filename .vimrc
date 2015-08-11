@@ -392,7 +392,8 @@
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
         " }
         " Filetype settings {
-            au FileType eruby,ruby,yaml,css     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType eruby,ruby,yaml,css,dot set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType tex                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
             au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
