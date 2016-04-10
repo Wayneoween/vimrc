@@ -362,7 +362,7 @@
 " }
 " Settings for addons {
     " vim-gitgutter {
-        let g:gitgutter_enabled = 0
+        let g:gitgutter_enabled = 1
         highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
         highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
         highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
@@ -372,9 +372,6 @@
         " Decrease amount of executions
         "let g:gitgutter_eager = 0
     " }
-    " Airline {
-         let g:airline_theme='solarized'
-    " }
     " NERDtree {
          " autocmd vimenter * NERDTree
          " Close NERDtree with CTRL-e
@@ -383,16 +380,17 @@
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     " }
     " Airline.vim {{{
-    augroup airline_config
-        autocmd!
-        let g:airline_powerline_fonts = 1
-        let g:airline_enable_syntastic = 1
-        let g:airline#extensions#tabline#buffer_nr_format = '%s '
-        let g:airline#extensions#tabline#buffer_nr_show = 1
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#fnamecollapse = 0
-        let g:airline#extensions#tabline#fnamemod = ':t'
-    augroup END
+        augroup airline_config
+            autocmd!
+            let g:airline_theme='solarized'
+            let g:airline_powerline_fonts = 1
+            let g:airline_enable_syntastic = 1
+            let g:airline#extensions#tabline#buffer_nr_format = '%s '
+            let g:airline#extensions#tabline#buffer_nr_show = 1
+            let g:airline#extensions#tabline#enabled = 1
+            let g:airline#extensions#tabline#fnamecollapse = 0
+            let g:airline#extensions#tabline#fnamemod = ':t'
+        augroup END
     " }}}
     " }
 
