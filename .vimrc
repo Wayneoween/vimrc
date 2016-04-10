@@ -24,6 +24,7 @@
     set ttyfast
     "Enable modelines, secured by ciaranm/securemodelines
     set modeline
+    set modelines=5
     "No exec
     set secure
     "Encoding
@@ -48,14 +49,15 @@
     Bundle 'gmarik/vundle'
 
     Bundle 'airblade/vim-gitgutter'
+    Bundle 'vim-airline/vim-airline'
+    Bundle 'vim-airline/vim-airline-themes'
     Bundle 'altercation/vim-colors-solarized'
-    Bundle 'bling/vim-airline'
-    Bundle 'jistr/vim-nerdtree-tabs'
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'scrooloose/nerdtree'
     Bundle 'scrooloose/syntastic'
     Bundle 'tlvince/securemodelines'
+    Bundle 'junegunn/vim-emoji'
 
     Bundle 'vim-ruby/vim-ruby'
     Bundle 'tpope/vim-rails'
@@ -380,7 +382,19 @@
          " Close vim if NERDtree is only window
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     " }
-" }
+    " Airline.vim {{{
+    augroup airline_config
+        autocmd!
+        let g:airline_powerline_fonts = 1
+        let g:airline_enable_syntastic = 1
+        let g:airline#extensions#tabline#buffer_nr_format = '%s '
+        let g:airline#extensions#tabline#buffer_nr_show = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#fnamecollapse = 0
+        let g:airline#extensions#tabline#fnamemod = ':t'
+    augroup END
+    " }}}
+    " }
 
 " Conditionals {
     if has('autocmd')
