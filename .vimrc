@@ -57,8 +57,8 @@
     Bundle 'scrooloose/nerdtree'
     Bundle 'scrooloose/syntastic'
     Bundle 'tlvince/securemodelines'
+    Bundle 'rodjek/vim-puppet'
     Bundle 'junegunn/vim-emoji'
-
     Bundle 'vim-ruby/vim-ruby'
     Bundle 'tpope/vim-rails'
     Bundle 'tpope/vim-bundler'
@@ -400,6 +400,7 @@
             au BufRead,BufNewFile *.gui         set ft=perl
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
             au BufRead,BufNewFile Vagrantfile*  set ft=ruby
+            au BufRead,BufNewFile *.pp          set ft=puppet
             au BufRead,BufNewFile *.hs          set ft=haskell
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
         " }
