@@ -31,6 +31,7 @@
     set encoding=utf-8
     "Function of the backspace key
     set backspace=indent,eol,start
+    set noswapfile
 " }
 
 " Vundle with automatic setup {
@@ -48,23 +49,24 @@
 
     Bundle 'gmarik/vundle'
 
-    Bundle 'airblade/vim-gitgutter'
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'vim-airline/vim-airline-themes'
-    Bundle 'altercation/vim-colors-solarized'
     Bundle 'Lokaltog/vim-easymotion'
+    Bundle 'airblade/vim-gitgutter'
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'chase/vim-ansible-yaml'
+    Bundle 'godlygeek/tabular'
+    Bundle 'hail2u/vim-css3-syntax'
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'junegunn/vim-emoji'
     Bundle 'nathanaelkane/vim-indent-guides'
+    Bundle 'rodjek/vim-puppet'
     Bundle 'scrooloose/nerdtree'
     Bundle 'scrooloose/syntastic'
     Bundle 'tlvince/securemodelines'
-    Bundle 'rodjek/vim-puppet'
-    Bundle 'junegunn/vim-emoji'
-    Bundle 'vim-ruby/vim-ruby'
-    Bundle 'tpope/vim-rails'
     Bundle 'tpope/vim-bundler'
-    Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'hail2u/vim-css3-syntax'
-    Bundle 'chase/vim-ansible-yaml'
+    Bundle 'tpope/vim-rails'
+    Bundle 'vim-airline/vim-airline'
+    Bundle 'vim-airline/vim-airline-themes'
+    Bundle 'vim-ruby/vim-ruby'
 
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
@@ -400,6 +402,7 @@
             au BufRead,BufNewFile *.gui         set ft=perl
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
             au BufRead,BufNewFile Vagrantfile*  set ft=ruby
+            au BufRead,BufNewFile Capfile       set ft=ruby
             au BufRead,BufNewFile *.pp          set ft=puppet
             au BufRead,BufNewFile *.hs          set ft=haskell
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
@@ -409,7 +412,7 @@
             au FileType tex                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-            au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
+            au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
             au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
