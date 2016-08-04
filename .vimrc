@@ -49,24 +49,37 @@
 
     Bundle 'gmarik/vundle'
 
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'airblade/vim-gitgutter'
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'chase/vim-ansible-yaml'
-    Bundle 'godlygeek/tabular'
-    Bundle 'hail2u/vim-css3-syntax'
-    Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'junegunn/vim-emoji'
-    Bundle 'nathanaelkane/vim-indent-guides'
-    Bundle 'rodjek/vim-puppet'
-    Bundle 'scrooloose/nerdtree'
+    " Enhanced usability
     Bundle 'scrooloose/syntastic'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'Xuyuanp/nerdtree-git-plugin'
+    Bundle 'airblade/vim-gitgutter'
+    Bundle 'Lokaltog/vim-easymotion'
     Bundle 'tlvince/securemodelines'
+    Bundle 'ctrlpvim/ctrlp.vim'
+
+    " Languages and related
+    Bundle 'chase/vim-ansible-yaml'
+    Bundle 'hail2u/vim-css3-syntax'
+    Bundle 'chrisbra/csv.vim'
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'rodjek/vim-puppet'
     Bundle 'tpope/vim-bundler'
     Bundle 'tpope/vim-rails'
+    Bundle 'vim-ruby/vim-ruby'
+
+    " Styling
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'godlygeek/tabular'
+    Bundle 'junegunn/vim-emoji'
+    Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'vim-airline/vim-airline'
     Bundle 'vim-airline/vim-airline-themes'
-    Bundle 'vim-ruby/vim-ruby'
+
+    " Experimental
+    Bundle 'xolox/vim-easytags'
+    Bundle 'xolox/vim-misc'
+    Bundle 'majutsushi/tagbar'
 
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
@@ -375,13 +388,36 @@
         "let g:gitgutter_eager = 0
     " }
     " NERDtree {
-         " autocmd vimenter * NERDTree
+         autocmd StdinReadPre * let s:std_in=1
+         autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
          " Close NERDtree with CTRL-e
          nnoremap <C-e> :NERDTreeToggle<CR>
          " Close vim if NERDtree is only window
-         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+         " NERDTress File highlighting
+         " https://github.com/scrooloose/nerdtree/issues/433#issuecomment-92590696
+
+         " function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+         "  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+         "  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+         " endfunction
+         "
+         " call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+         " call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+         " call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+         " call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+         " call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+         " call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+         " call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+         " call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
     " }
-    " Airline.vim {{{
+    " Airline.vim {
         augroup airline_config
             autocmd!
             let g:airline_theme='solarized'
@@ -393,8 +429,18 @@
             let g:airline#extensions#tabline#fnamecollapse = 0
             let g:airline#extensions#tabline#fnamemod = ':t'
         augroup END
-    " }}}
     " }
+    " syntastic {
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
+    " }
+" }
 
 " Conditionals {
     if has('autocmd')
