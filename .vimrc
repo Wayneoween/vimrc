@@ -2,12 +2,12 @@
 " vim: set foldmarker={,} foldlevel=0 spell:
 "
 "    This is my personal vim configuration. As quite a lot of effort went into
-"    this, I would be glad if this was useful for anybody else than me.
+"    it, I would be glad if this was useful for anybody else than me.
 "
 "    Feel free to ask question or reuse any useful parts.
 "
-"    Also published on Github, although there seem to be thousands of other
-"    great .vimrc there:
+"    I also periodically sync my current vimrc to Github, so feel free to grab
+"    the current version from there:
 "        https://github.com/Flowm/vimrc
 " }
 
@@ -31,6 +31,9 @@
     set encoding=utf-8
     "Function of the backspace key
     set backspace=indent,eol,start
+    "Remove splash screen
+    set shortmess+=I
+
     set noswapfile
 " }
 
@@ -38,14 +41,14 @@
     let iCanHazVundle=1
     let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
     if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
+        echo "Installing Vundle..i."
         echo ""
         silent !mkdir -p ~/.vim/bundle
         silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
         let iCanHazVundle=0
     endif
     set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    call vundle#begin()
 
     Bundle 'gmarik/vundle'
 
@@ -55,8 +58,9 @@
     Bundle 'Xuyuanp/nerdtree-git-plugin'
     Bundle 'airblade/vim-gitgutter'
     Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'tlvince/securemodelines'
+    Bundle 'ciaranm/securemodelines'
     Bundle 'ctrlpvim/ctrlp.vim'
+    Bundle 'editorconfig/editorconfig-vim'
 
     " Languages and related
     Bundle 'chase/vim-ansible-yaml'
@@ -86,16 +90,18 @@
         echo ""
         :BundleInstall
     endif
+
+    call vundle#end()
     filetype plugin indent on
 " }
 
 " General {
     " Backup and temporary files {
-    "     set backup
-    "     set backupdir=~/.tmp/.vimbak
-    "     set directory=~/.tmp/.vimtmp,.
-    "     set history=2048
-    "     set undolevels=2048
+         set backup
+         set backupdir=~/.vim/.vimbak
+         set directory=~/.vim/.vimtmp,.
+         set history=2048
+         set undolevels=2048
     " }
     " Tab completion {
         set wildmenu
@@ -117,7 +123,7 @@
         set magic
     " }
     " Spelling {
-        set spelllang=en_us ",de_de
+        set spelllang=en
     " }
     " Misc {
         " Only one whitespace after _J_oining after a dot
@@ -130,23 +136,23 @@
 
 " Appearance and handling {
     " Theme {
-        let g:solarized_termtrans = 1
-        " Use a portable version of solarized (no terminal adjustments needed)
-        let g:solarized_termcolors=256
+        " Use a portable version of solarized in all terminals except iterm
+        if $LC_TERM != 'iterm'
+            let t_Co=256
+            let g:solarized_termcolors=256
+            " let g:solarized_termtrans=1
+        endif
         " Set colorscheme to solarized
         colorscheme solarized
         " Use the dark version of solarized
         set background=dark
-        " Previous used colorscheme
-        "colorscheme evening
     " }
-    " Colors {
-        hi Search ctermbg=DarkYellow ctermfg=White
+    " Color tweaks {
         " Used by listchars
-        hi SpecialKey ctermbg=1
+        hi Search ctermbg=DarkYellow ctermfg=White
+        hi SpecialKey ctermbg=4
 
-        " Some tweaks for the solarized colorscheme
-        hi Identifier ctermfg=6 cterm=bold
+        "hi Identifier ctermfg=6 cterm=bold
             " 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
             " Non-safe Colors, 16-Color-Term:
             " darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
@@ -183,7 +189,7 @@
     " Overlong lines display {
         "Don't do newlines automatically
         set fo-=t
-        "Break the line instead of scrolling right
+        "Scroll right by default instead of breaking the line
         set nowrap
         "Don't stat a new line automatically break lines
         set wrapmargin=0
@@ -236,11 +242,11 @@
     " }
     " C&P between files via a tempfile {
         "Copy to buffer
-        vnoremap <leader>y :w! ~/.tmp/.vimbak/vimbuffer<CR>
-        nnoremap <leader>y :.w! ~/.tmp/.vimbak/vimbuffer<CR>
+        vnoremap <leader>y :w! ~/.vim/.vimbak/vimbuffer<CR>
+        nnoremap <leader>y :.w! ~/.vim/.vimbak/vimbuffer<CR>
         "Paste from buffer
-        nnoremap <leader>p :r ~/.tmp/.vimbak/vimbuffer<CR>
-        nnoremap <leader>P :-r ~/.tmp/.vimbak/vimbuffer<CR>
+        nnoremap <leader>p :r ~/.vim/.vimbak/vimbuffer<CR>
+        nnoremap <leader>P :-r ~/.vim/.vimbak/vimbuffer<CR>
     " }
     " Disable arrow keys by default {
     "    nnoremap <up> <nop>
@@ -329,9 +335,22 @@
         " Toggle line numbers {
             function ToggleNumber()
                 if &number
+                    set norelativenumber
                     set nonumber
                 else
+                    set norelativenumber
                     set number
+                endif
+            endfunction
+        " }
+        " Toggle relative line numbers {
+            function ToggleRelNumber()
+                if &relativenumber
+                    set nonumber
+                    set norelativenumber
+                else
+                    set number
+                    set relativenumber
                 endif
             endfunction
         " }
@@ -348,31 +367,34 @@
     " Function Keys {
         " Handling:
         " <F2> Toggle git diff cloumn
-        map <silent> <F2> :GitGutterToggle <CR>
+        map <silent><F2> :GitGutterToggle <CR>
         " <L-F2> Toggle git diff line highlighting
-        map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
+        map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>
         " <F3> Toggle the arrow keys
-        map <silent> <F3> :call ToggleArrowKeys() <CR>
+        map <silent><F3> :call ToggleArrowKeys() <CR>
         " <L-F3> Toggle mouse mode
         "TODO
         " <F4> Toggle paste mode
         set pastetoggle=<F4>
         " Desing:
         " <F5> Toggle whitespace and tab display
-        map <silent> <F5> :call ToggleList() <CR>
+        map <silent><F5> :call ToggleList() <CR>
         " <L-F5> Toggle visual highlighting of lines longer than 80 chars
-        map <silent> <leader><F5> :call ToggleColorColumn() <CR>
+        map <silent><leader><F5> :call ToggleColorColumn() <CR>
         " <F6> Toggle line wrap
-        map <silent> <F6> :call ToggleWrap() <CR>
+        map <silent><F6> :call ToggleNumber() <CR>
         " <L-F6> Toggle line numbers
-        map <silent> <leader><F6> :call ToggleNumber() <CR>
-        " <F7> Toggle background
-        map <silent> <F7> :call ToggleSolarizedBackground() <CR>
+        map <silent><leader><F6> :call ToggleRelNumber() <CR>
+        " <F7> Toggle relative line numbers
+        map <silent> <F7> :call ToggleWrap() <CR>
+        " <L-F7> Toggle background
+        call togglebg#map("<leader><F7>")
+        map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>
         " <F9> Toggle spell checking
-        map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+        map <F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
         " Functions:
         " <F12> Display all custom keybindings
-        map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
+        map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
     " }
 " }
 " Settings for addons {
@@ -382,8 +404,8 @@
         highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
         highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
         highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-        nmap <leader>j <Plug>GitGutterNextHunk
-        nmap <leader>k <Plug>GitGutterPrevHunk
+        nmap <leader>j <Plug>GitGutterNextHunk<CR>
+        nmap <leader>k <Plug>GitGutterPrevHunk<CR>
         " Decrease amount of executions
         "let g:gitgutter_eager = 0
     " }
@@ -444,6 +466,8 @@
 
 " Conditionals {
     if has('autocmd')
+        augroup testgroup
+        autocmd!
         " Filetype detection {
             au BufRead,BufNewFile *.gui         set ft=perl
             au BufRead,BufNewFile *.hs          set ft=haskell
@@ -455,7 +479,6 @@
         " }
         " Filetype settings {
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-            au FileType cpp                     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
             au FileType eruby,ruby,yaml,css,dot set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
@@ -465,6 +488,7 @@
             au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
             au FileType tex                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType vim                     set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
         " }
     endif
 " }
