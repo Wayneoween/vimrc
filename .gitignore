@@ -1,1 +1,3 @@
 bundle/*
+.vimbak/*
+.vimtmp/*
