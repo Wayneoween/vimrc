@@ -446,24 +446,25 @@
     if has('autocmd')
         " Filetype detection {
             au BufRead,BufNewFile *.gui         set ft=perl
-            au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
-            au BufRead,BufNewFile Vagrantfile*  set ft=ruby
-            au BufRead,BufNewFile Capfile       set ft=ruby
-            au BufRead,BufNewFile *.pp          set ft=puppet
             au BufRead,BufNewFile *.hs          set ft=haskell
+            au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
+            au BufRead,BufNewFile *.pp          set ft=puppet
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+            au BufRead,BufNewFile Capfile       set ft=ruby
+            au BufRead,BufNewFile Vagrantfile*  set ft=ruby
         " }
         " Filetype settings {
-            au FileType eruby,ruby,yaml,css,dot set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-            au FileType tex                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-            au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-            au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-            au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
-            au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-            au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-            au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
             au FileType cpp                     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
+            au FileType eruby,ruby,yaml,css,dot set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
+            au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
+            au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType lua                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
+            au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+            au FileType sh,bash                 set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+            au FileType tex                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
         " }
     endif
 " }
