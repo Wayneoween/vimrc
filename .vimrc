@@ -84,6 +84,7 @@
     Bundle 'xolox/vim-easytags'
     Bundle 'xolox/vim-misc'
     Bundle 'majutsushi/tagbar'
+    Bundle 'blindFS/vim-taskwarrior'
 
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
@@ -140,7 +141,7 @@
         if $LC_TERM != 'iterm'
             let t_Co=256
             let g:solarized_termcolors=256
-            " let g:solarized_termtrans=1
+            let g:solarized_termtrans=1
         endif
         " Set colorscheme to solarized
         colorscheme solarized
@@ -412,10 +413,25 @@
     " NERDtree {
          autocmd StdinReadPre * let s:std_in=1
          autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-         " Close NERDtree with CTRL-e
-         nnoremap <C-e> :NERDTreeToggle<CR>
          " Close vim if NERDtree is only window
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+         " https://github.com/scrooloose/nerdtree/issues/480
+         function! NERDTreeToggleInCurDir()
+             " If NERDTree is open in the current buffer
+             if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+                 exe ":NERDTreeClose"
+             else
+                 if (expand("%:t") != '')
+                     exe ":NERDTreeFind"
+                 else
+                     exe ":NERDTreeToggle"
+                 endif
+             endif
+         endfunction
+
+         " Toggle NERDtree with CTRL-e
+         nnoremap <C-e> :call NERDTreeToggleInCurDir()<CR>
 
          " NERDTress File highlighting
          " https://github.com/scrooloose/nerdtree/issues/433#issuecomment-92590696
