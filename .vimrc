@@ -84,7 +84,6 @@
     Bundle 'xolox/vim-easytags'
     Bundle 'xolox/vim-misc'
     Bundle 'majutsushi/tagbar'
-    Bundle 'blindFS/vim-taskwarrior'
 
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
