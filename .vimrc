@@ -50,45 +50,45 @@
     set rtp+=~/.vim/bundle/vundle/
     call vundle#begin()
 
-    Bundle 'gmarik/vundle'
+    Plugin 'gmarik/vundle'
 
     " Enhanced usability
-    Bundle 'scrooloose/syntastic'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'Xuyuanp/nerdtree-git-plugin'
-    Bundle 'airblade/vim-gitgutter'
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'ciaranm/securemodelines'
-    Bundle 'ctrlpvim/ctrlp.vim'
-    Bundle 'editorconfig/editorconfig-vim'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'ciaranm/securemodelines'
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'editorconfig/editorconfig-vim'
 
     " Languages and related
-    Bundle 'chase/vim-ansible-yaml'
-    Bundle 'hail2u/vim-css3-syntax'
-    Bundle 'chrisbra/csv.vim'
-    Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'rodjek/vim-puppet'
-    Bundle 'tpope/vim-bundler'
-    Bundle 'tpope/vim-rails'
-    Bundle 'vim-ruby/vim-ruby'
+    Plugin 'chase/vim-ansible-yaml'
+    Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'chrisbra/csv.vim'
+    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'rodjek/vim-puppet'
+    Plugin 'tpope/vim-bundler'
+    Plugin 'tpope/vim-rails'
+    Plugin 'vim-ruby/vim-ruby'
 
     " Styling
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'godlygeek/tabular'
-    Bundle 'junegunn/vim-emoji'
-    Bundle 'nathanaelkane/vim-indent-guides'
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'vim-airline/vim-airline-themes'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'godlygeek/tabular'
+    Plugin 'junegunn/vim-emoji'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
 
     " Experimental
-    Bundle 'xolox/vim-easytags'
-    Bundle 'xolox/vim-misc'
-    Bundle 'majutsushi/tagbar'
+    Plugin 'xolox/vim-easytags'
+    Plugin 'xolox/vim-misc'
+    Plugin 'majutsushi/tagbar'
 
     if iCanHazVundle == 0
-        echo "Installing Bundles, please ignore key map error messages"
+        echo "Installing Plugins, please ignore key map error messages"
         echo ""
-        :BundleInstall
+        :PluginInstall
     endif
 
     call vundle#end()
