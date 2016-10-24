@@ -24,15 +24,14 @@
     set ttyfast
     "Enable modelines, secured by ciaranm/securemodelines
     set modeline
-    set modelines=5
     "No exec
     set secure
     "Encoding
     set encoding=utf-8
-    "Function of the backspace key
-    set backspace=indent,eol,start
     "Remove splash screen
     set shortmess+=I
+    "Function of the backspace key
+    set backspace=indent,eol,start
 
     set noswapfile
 " }
@@ -131,6 +130,10 @@
         " Disable autoselection of vim clipboard
         set clipboard-=autoselect
         set guioptions-=a
+        " Use the best available cryptmethod
+        if has("patch-7.4.399")
+            set cryptmethod=blowfish2
+        endif
     " }
 " }
 
@@ -199,7 +202,7 @@
     " Indention {
         "One Tab per indentation level. 4 column wide Tabs.
         "Intelligently detect current indention level
-        set smartindent
+        set autoindent
         "Size of real Tabs
         set tabstop=4
         "Indent amount when using TAB
@@ -376,7 +379,7 @@
         "TODO
         " <F4> Toggle paste mode
         set pastetoggle=<F4>
-        " Desing:
+        " Looks:
         " <F5> Toggle whitespace and tab display
         map <silent><F5> :call ToggleList() <CR>
         " <L-F5> Toggle visual highlighting of lines longer than 80 chars
@@ -404,8 +407,8 @@
         highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
         highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
         highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-        nmap <leader>j <Plug>GitGutterNextHunk<CR>
-        nmap <leader>k <Plug>GitGutterPrevHunk<CR>
+        " nmap <leader>j <Plug>GitGutterNextHunk
+        " nmap <leader>k <Plug>GitGutterPrevHunk
         " Decrease amount of executions
         "let g:gitgutter_eager = 0
     " }
