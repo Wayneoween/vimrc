@@ -98,6 +98,8 @@
     " Backup and temporary files {
          set backup
          set backupdir=~/.vim/.vimbak
+         set undofile
+         set undodir=~/.vim/.vimundo
          set directory=~/.vim/.vimtmp,.
          set history=2048
          set undolevels=2048
@@ -179,6 +181,7 @@
         set showcmd
         "No Bell
         set noerrorbells visualbell
+        set mouse=
     " }
 " }
 
@@ -216,7 +219,7 @@
         "Disable folding completely
         "set nofoldenable
         "Disable folding in the initial view
-        set foldlevel=40
+        set foldlevel=20
         "Make folding indent sensitive
         set foldmethod=indent
     " }
@@ -401,6 +404,9 @@
     " }
 " }
 " Settings for addons {
+    " ctrlp {
+        let g:ctrlp_extensions = ['tag', 'mixed']
+    " }
     " vim-gitgutter {
         let g:gitgutter_enabled = 1
         highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
@@ -479,6 +485,7 @@
         let g:syntastic_auto_loc_list = 1
         let g:syntastic_check_on_open = 1
         let g:syntastic_check_on_wq = 0
+        let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'possibly useless use of a variable in void context'}
     " }
 " }
 
@@ -494,6 +501,7 @@
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au BufRead,BufNewFile Capfile       set ft=ruby
             au BufRead,BufNewFile Vagrantfile*  set ft=ruby
+            au BufRead,BufNewFile *.haml        set ft=haml
         " }
         " Filetype settings {
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
