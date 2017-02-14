@@ -70,6 +70,7 @@
     Plugin 'tpope/vim-bundler'
     Plugin 'tpope/vim-rails'
     Plugin 'vim-ruby/vim-ruby'
+    Plugin 'lepture/vim-jinja'
 
     " Styling
     Plugin 'altercation/vim-colors-solarized'
@@ -494,7 +495,7 @@
         augroup testgroup
         autocmd!
         " Filetype detection {
-            au BufRead,BufNewFile *.gui         set ft=perl
+            au BufRead,BufNewFile *.j2          set ft=jinja
             au BufRead,BufNewFile *.hs          set ft=haskell
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
             au BufRead,BufNewFile *.pp          set ft=puppet
