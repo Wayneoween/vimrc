@@ -510,6 +510,7 @@
             au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
             au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType json                    set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType lua                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
             au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
