@@ -496,6 +496,8 @@
         autocmd!
         " Filetype detection {
             au BufRead,BufNewFile *.j2          set ft=jinja
+            au BufRead,BufNewFile *.gui         set ft=perl
+            au BufRead,BufNewFile *.sh.erb      set ft=sh
             au BufRead,BufNewFile *.hs          set ft=haskell
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
             au BufRead,BufNewFile *.pp          set ft=puppet
