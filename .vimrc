@@ -34,6 +34,8 @@
     set backspace=indent,eol,start
 
     set noswapfile
+
+    set t_RV=
 " }
 
 " Vundle with automatic setup {
@@ -52,30 +54,40 @@
     Plugin 'gmarik/vundle'
 
     " Enhanced usability
-    Plugin 'scrooloose/syntastic'
-    Plugin 'scrooloose/nerdtree'
+    "
+    " easymotion: mainly used for highlighting search results
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'Shougo/neocomplete'
     Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'Lokaltog/vim-easymotion'
     Plugin 'ciaranm/securemodelines'
     Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'editorconfig/editorconfig-vim'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tpope/vim-bundler'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-surround'
+
 
     " Languages and related
     Plugin 'chase/vim-ansible-yaml'
-    Plugin 'hail2u/vim-css3-syntax'
     Plugin 'chrisbra/csv.vim'
+    Plugin 'elzr/vim-json'
+    Plugin 'hail2u/vim-css3-syntax'
     Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'lepture/vim-jinja'
     Plugin 'rodjek/vim-puppet'
-    Plugin 'tpope/vim-bundler'
+    Plugin 'tpope/vim-endwise'
     Plugin 'tpope/vim-rails'
     Plugin 'vim-ruby/vim-ruby'
-    Plugin 'lepture/vim-jinja'
 
     " Styling
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'godlygeek/tabular'
     Plugin 'junegunn/vim-emoji'
+    Plugin 'mhinz/vim-startify'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
@@ -83,8 +95,6 @@
     " Experimental
     Plugin 'xolox/vim-easytags'
     Plugin 'xolox/vim-misc'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'Shougo/neocomplete'
 
     if iCanHazVundle == 0
         echo "Installing Plugins, please ignore key map error messages"
@@ -286,25 +296,25 @@
             endfunction
         " }
         " Toggle the arrow keys {
-            function ToggleArrowKeys()
-                if !exists('s:arrow_keys')
-                    unmap <up>
-                    unmap <down>
-                    unmap <left>
-                    unmap <right>
-                    let s:arrow_keys = 1
-                else
-                    nnoremap <up> <nop>
-                    nnoremap <down> <nop>
-                    nnoremap <left> <nop>
-                    nnoremap <right> <nop>
-                    inoremap <up> <nop>
-                    inoremap <down> <nop>
-                    inoremap <left> <nop>
-                    inoremap <right> <nop>
-                    unlet s:arrow_keys
-                endif
-            endfunction
+        "    function ToggleArrowKeys()
+        "        if !exists('s:arrow_keys')
+        "            unmap <up>
+        "            unmap <down>
+        "            unmap <left>
+        "            unmap <right>
+        "            let s:arrow_keys = 1
+        "        else
+        "            nnoremap <up> <nop>
+        "            nnoremap <down> <nop>
+        "            nnoremap <left> <nop>
+        "            nnoremap <right> <nop>
+        "            inoremap <up> <nop>
+        "            inoremap <down> <nop>
+        "            inoremap <left> <nop>
+        "            inoremap <right> <nop>
+        "            unlet s:arrow_keys
+        "        endif
+        "    endfunction
         " }
         " Toggle whitespace and tab display {
             function ToggleList()
@@ -378,28 +388,22 @@
         map <silent><F2> :GitGutterToggle <CR>
         " <L-F2> Toggle git diff line highlighting
         map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>
-        " <F3> Toggle the arrow keys
-        map <silent><F3> :call ToggleArrowKeys() <CR>
-        " <L-F3> Toggle mouse mode
-        "TODO
+        " <F3> Toggle line numbers
+        map <silent><F3> :call ToggleRelNumber() <CR>
         " <F4> Toggle paste mode
         set pastetoggle=<F4>
         " Looks:
         " <F5> Toggle whitespace and tab display
         map <silent><F5> :call ToggleList() <CR>
-        " <L-F5> Toggle visual highlighting of lines longer than 80 chars
-        map <silent><leader><F5> :call ToggleColorColumn() <CR>
-        " <F6> Toggle line wrap
+        " <F6> Toggle line number
         map <silent><F6> :call ToggleNumber() <CR>
-        " <L-F6> Toggle line numbers
-        map <silent><leader><F6> :call ToggleRelNumber() <CR>
-        " <F7> Toggle relative line numbers
-        map <silent> <F7> :call ToggleWrap() <CR>
+        " <F7> Toggle line wrap
+        map <silent><F7> :call ToggleWrap() <CR>
         " <L-F7> Toggle background
         call togglebg#map("<leader><F7>")
         map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>
-        " <F9> Toggle spell checking
-        map <F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+        " <F8> Toggle visual highlighting of lines longer than 80 chars
+        map <silent><F8> :call ToggleColorColumn() <CR>
         " Functions:
         " <F12> Display all custom keybindings
         map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
@@ -415,14 +419,27 @@
         highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
         highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
         highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-        " nmap <leader>j <Plug>GitGutterNextHunk
-        " nmap <leader>k <Plug>GitGutterPrevHunk
+        nmap <leader>j <Plug>GitGutterNextHunk
+        nmap <leader>k <Plug>GitGutterPrevHunk
         " Decrease amount of executions
         "let g:gitgutter_eager = 0
     " }
+    " json-vim {
+        augroup json_autocmd
+            autocmd!
+            autocmd FileType json set autoindent
+            autocmd FileType json set formatoptions=tcq2l
+            autocmd FileType json set textwidth=78 shiftwidth=2
+            autocmd FileType json set softtabstop=2 tabstop=8
+            autocmd FileType json set expandtab
+            autocmd FileType json set foldmethod=syntax
+        augroup END
+    " }
     " NERDtree {
-         autocmd StdinReadPre * let s:std_in=1
-         autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+         " Autostart NERDtree when opening an empty buffer
+         "autocmd StdinReadPre * let s:std_in=1
+         "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
          " Close vim if NERDtree is only window
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -442,28 +459,6 @@
 
          " Toggle NERDtree with CTRL-e
          nnoremap <C-e> :call NERDTreeToggleInCurDir()<CR>
-
-         " NERDTress File highlighting
-         " https://github.com/scrooloose/nerdtree/issues/433#issuecomment-92590696
-
-         " function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-         "  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-         "  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-         " endfunction
-         "
-         " call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-         " call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-         " call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-         " call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-         " call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-         " call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-         " call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-         " call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
     " }
     " Airline.vim {
         augroup airline_config
@@ -485,9 +480,23 @@
 
         let g:syntastic_always_populate_loc_list = 1
         let g:syntastic_auto_loc_list = 1
-        let g:syntastic_check_on_open = 1
-        let g:syntastic_check_on_wq = 0
+        let g:syntastic_check_on_open = 0
+        let g:syntastic_check_on_wq = 1
         let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'possibly useless use of a variable in void context'}
+    " }
+    " tagbar {
+        nmap <F9> :TagbarToggle<CR>
+        let g:tagbar_type_puppet = {
+                    \ 'ctagstype': 'puppet',
+                    \ 'kinds': [
+                      \'c:class',
+                      \'s:site',
+                      \'n:node',
+                      \'d:definition',
+                      \'r:resource',
+                      \'f:default'
+                      \]
+                    \}
     " }
     " neocomplete {
         " Disable AutoComplPop.
@@ -507,9 +516,9 @@
         " <CR>: close popup and save indent.
         inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
         function! s:my_cr_function()
-            return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+            "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
             " For no inserting <CR> key.
-            "return pumvisible() ? "\<C-y>" : "\<CR>"
+            return pumvisible() ? "\<C-y>" : "\<CR>"
         endfunction
         " <TAB>: completion.
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -542,16 +551,17 @@
         augroup testgroup
         autocmd!
         " Filetype detection {
-            au BufRead,BufNewFile *.j2          set ft=jinja
             au BufRead,BufNewFile *.gui         set ft=perl
-            au BufRead,BufNewFile *.sh.erb      set ft=sh
+            au BufRead,BufNewFile *.haml        set ft=haml
             au BufRead,BufNewFile *.hs          set ft=haskell
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
+            au BufRead,BufNewFile *.j2          set ft=jinja
+            au BufRead,BufNewFile *.json        set ft=json
             au BufRead,BufNewFile *.pp          set ft=puppet
+            au BufRead,BufNewFile *.sh.erb      set ft=sh
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au BufRead,BufNewFile Capfile       set ft=ruby
             au BufRead,BufNewFile Vagrantfile*  set ft=ruby
-            au BufRead,BufNewFile *.haml        set ft=haml
         " }
         " Filetype settings {
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
@@ -559,7 +569,6 @@
             au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
             au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-            au FileType json                    set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType lua                     set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType perl                    set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
             au FileType python                  set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
