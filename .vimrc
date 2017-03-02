@@ -8,7 +8,7 @@
 "
 "    I also periodically sync my current vimrc to Github, so feel free to grab
 "    the current version from there:
-"        https://github.com/Flowm/vimrc
+"        https://github.com/Wayneoween/vimrc
 " }
 
 " Basic {
