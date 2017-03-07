@@ -32,10 +32,19 @@
     set shortmess+=I
     "Function of the backspace key
     set backspace=indent,eol,start
-
+    "Don't use swap files
     set noswapfile
 
     set t_RV=
+    "Use this specific term env
+    set term=xterm-256color
+" }
+
+" Operating System Specific {
+    "let os = substitute(system('uname'), "\n", "", "")
+    "if os == "FreeBSD"
+    "elseif os == "Linux"
+    "endif
 " }
 
 " Vundle with automatic setup {
