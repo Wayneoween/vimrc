@@ -84,6 +84,7 @@
     Plugin 'chase/vim-ansible-yaml'
     Plugin 'chrisbra/csv.vim'
     Plugin 'elzr/vim-json'
+    Plugin 'fatih/vim-go'
     Plugin 'hail2u/vim-css3-syntax'
     Plugin 'jelera/vim-javascript-syntax'
     Plugin 'lepture/vim-jinja'
@@ -266,6 +267,8 @@
         "Split Window and switch over to it
         nnoremap <leader>w <C-w>v<C-w>l
         nnoremap <leader>w <C-w>h<C-w>l
+        "Search and replace all occurences of word
+        nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
     " }
     " C&P between files via a tempfile {
         "Copy to buffer
