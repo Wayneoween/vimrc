@@ -103,8 +103,8 @@
     Plugin 'vim-airline/vim-airline-themes'
 
     " Experimental
-    Plugin 'xolox/vim-easytags'
     Plugin 'xolox/vim-misc'
+    Plugin 'xolox/vim-easytags'
 
     if iCanHazVundle == 0
         echo "Installing Plugins, please ignore key map error messages"
@@ -471,6 +471,12 @@
 
          " Toggle NERDtree with CTRL-e
          nnoremap <C-e> :call NERDTreeToggleInCurDir()<CR>
+    " }
+    " easytags {
+        augroup easytags
+            autocmd!
+            let g:easytags_file = '~/.vim/tags'
+        augroup END
     " }
     " Airline.vim {
         augroup airline_config
