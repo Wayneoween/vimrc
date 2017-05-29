@@ -497,10 +497,17 @@
         set statusline+=%*
 
         let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_aggregate_errors = 1
         let g:syntastic_auto_loc_list = 1
-        let g:syntastic_check_on_open = 0
+        let g:syntastic_check_on_open = 1
         let g:syntastic_check_on_wq = 1
+
+        " ruby
         let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'possibly useless use of a variable in void context'}
+
+        " lua
+        let g:syntastic_lua_checkers = ["luac", "luacheck"]
+        let g:syntastic_lua_luacheck_args = "--no-unused-args"
     " }
     " tagbar {
         nmap <F9> :TagbarToggle<CR>
