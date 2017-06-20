@@ -269,6 +269,8 @@
         nnoremap <leader>w <C-w>h<C-w>l
         "Search and replace all occurences of word
         nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+        "Upload file or buffer to ix.io
+        noremap <silent> <leader>i :w !ix<CR>
     " }
     " C&P between files via a tempfile {
         "Copy to buffer
@@ -499,7 +501,7 @@
         let g:syntastic_always_populate_loc_list = 1
         let g:syntastic_aggregate_errors = 1
         let g:syntastic_auto_loc_list = 1
-        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_open = 0
         let g:syntastic_check_on_wq = 1
 
         " ruby
