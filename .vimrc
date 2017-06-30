@@ -427,6 +427,9 @@
     " ctrlp {
         let g:ctrlp_extensions = ['tag', 'mixed']
     " }
+    " ctrlp {
+        let g:rails_menu = 0
+    " }
     " vim-gitgutter {
         let g:gitgutter_enabled = 1
         highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
