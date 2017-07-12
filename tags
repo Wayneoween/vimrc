@@ -1,0 +1,81 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+,,	/home/wayne/.vim/.vimrc	/^        inoremap ,, <ESC>$/;"	m	language:Vim
+<BS>	/home/wayne/.vim/.vimrc	/^        inoremap <expr><BS> neocomplete#smart_close_popup()."\\<C-h>"$/;"	m	language:Vim
+<C-e>	/home/wayne/.vim/.vimrc	/^         nnoremap <C-e> :call NERDTreeToggleInCurDir()<CR>$/;"	m	language:Vim
+<C-g>	/home/wayne/.vim/.vimrc	/^        inoremap <expr><C-g>     neocomplete#undo_completion()$/;"	m	language:Vim
+<C-h>	/home/wayne/.vim/.vimrc	/^        inoremap <expr><C-h> neocomplete#smart_close_popup()."\\<C-h>"$/;"	m	language:Vim
+<C-l>	/home/wayne/.vim/.vimrc	/^        inoremap <expr><C-l>     neocomplete#complete_common_string()$/;"	m	language:Vim
+<C-l>	/home/wayne/.vim/.vimrc	/^        map <silent> <C-l> :silent nohl<CR>$/;"	m	language:Vim
+<CR>	/home/wayne/.vim/.vimrc	/^        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>$/;"	m	language:Vim
+<F12>	/home/wayne/.vim/.vimrc	/^        map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~\/.vimrc <CR>$/;"	m	language:Vim
+<F2>	/home/wayne/.vim/.vimrc	/^        map <silent><F2> :GitGutterToggle <CR>$/;"	m	language:Vim
+<F3>	/home/wayne/.vim/.vimrc	/^        map <silent><F3> :call ToggleRelNumber() <CR>$/;"	m	language:Vim
+<F5>	/home/wayne/.vim/.vimrc	/^        map <silent><F5> :call ToggleList() <CR>$/;"	m	language:Vim
+<F6>	/home/wayne/.vim/.vimrc	/^        map <silent><F6> :call ToggleNumber() <CR>$/;"	m	language:Vim
+<F7>	/home/wayne/.vim/.vimrc	/^        map <silent><F7> :call ToggleWrap() <CR>$/;"	m	language:Vim
+<F8>	/home/wayne/.vim/.vimrc	/^        map <silent><F8> :call ToggleColorColumn() <CR>$/;"	m	language:Vim
+<F9>	/home/wayne/.vim/.vimrc	/^        nmap <F9> :TagbarToggle<CR>$/;"	m	language:Vim
+<leader><F2>	/home/wayne/.vim/.vimrc	/^        map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>$/;"	m	language:Vim
+<leader><F7>	/home/wayne/.vim/.vimrc	/^        map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>$/;"	m	language:Vim
+<leader>i	/home/wayne/.vim/.vimrc	/^        noremap <silent> <leader>i :w !ix<CR>$/;"	m	language:Vim
+<leader>j	/home/wayne/.vim/.vimrc	/^        nmap <leader>j <Plug>GitGutterNextHunk$/;"	m	language:Vim
+<leader>k	/home/wayne/.vim/.vimrc	/^        nmap <leader>k <Plug>GitGutterPrevHunk$/;"	m	language:Vim
+<leader>P	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>P :-r ~\/.vim\/.vimbak\/vimbuffer<CR>$/;"	m	language:Vim
+<leader>p	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>p :r ~\/.vim\/.vimbak\/vimbuffer<CR>$/;"	m	language:Vim
+<leader>s	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>s :%s\/\\<<C-r><C-w>\\>\/\/g<Left><Left>$/;"	m	language:Vim
+<leader>v	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>v V`]$/;"	m	language:Vim
+<leader>w	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>w <C-w>h<C-w>l$/;"	m	language:Vim
+<leader>w	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>w <C-w>v<C-w>l$/;"	m	language:Vim
+<leader>y	/home/wayne/.vim/.vimrc	/^        nnoremap <leader>y :.w! ~\/.vim\/.vimbak\/vimbuffer<CR>$/;"	m	language:Vim
+<leader>y	/home/wayne/.vim/.vimrc	/^        vnoremap <leader>y :w! ~\/.vim\/.vimbak\/vimbuffer<CR>$/;"	m	language:Vim
+<TAB>	/home/wayne/.vim/.vimrc	/^        inoremap <expr><TAB>  pumvisible() ? "\\<C-n>" : "\\<TAB>"$/;"	m	language:Vim
+<tab>	/home/wayne/.vim/.vimrc	/^        nnoremap <tab> %$/;"	m	language:Vim
+<tab>	/home/wayne/.vim/.vimrc	/^        vnoremap <tab> %$/;"	m	language:Vim
+airline_config	/home/wayne/.vim/.vimrc	/^        augroup airline_config$/;"	a	language:Vim
+easytags	/home/wayne/.vim/.vimrc	/^        augroup easytags$/;"	a	language:Vim
+g:acp_enableAtStartup	/home/wayne/.vim/.vimrc	/^        let g:acp_enableAtStartup = 0$/;"	v	language:Vim
+g:airline#extensions#tabline#buffer_nr_format	/home/wayne/.vim/.vimrc	/^            let g:airline#extensions#tabline#buffer_nr_format = '%s '$/;"	v	language:Vim
+g:airline#extensions#tabline#buffer_nr_show	/home/wayne/.vim/.vimrc	/^            let g:airline#extensions#tabline#buffer_nr_show = 1$/;"	v	language:Vim
+g:airline#extensions#tabline#enabled	/home/wayne/.vim/.vimrc	/^            let g:airline#extensions#tabline#enabled = 1$/;"	v	language:Vim
+g:airline#extensions#tabline#fnamecollapse	/home/wayne/.vim/.vimrc	/^            let g:airline#extensions#tabline#fnamecollapse = 0$/;"	v	language:Vim
+g:airline#extensions#tabline#fnamemod	/home/wayne/.vim/.vimrc	/^            let g:airline#extensions#tabline#fnamemod = ':t'$/;"	v	language:Vim
+g:airline_enable_syntastic	/home/wayne/.vim/.vimrc	/^            let g:airline_enable_syntastic = 1$/;"	v	language:Vim
+g:airline_powerline_fonts	/home/wayne/.vim/.vimrc	/^            let g:airline_powerline_fonts = 1$/;"	v	language:Vim
+g:airline_theme	/home/wayne/.vim/.vimrc	/^            let g:airline_theme='solarized'$/;"	v	language:Vim
+g:ctrlp_extensions	/home/wayne/.vim/.vimrc	/^        let g:ctrlp_extensions = ['tag', 'mixed']$/;"	v	language:Vim
+g:easytags_file	/home/wayne/.vim/.vimrc	/^            let g:easytags_file = '~\/.vim\/tags'$/;"	v	language:Vim
+g:gitgutter_enabled	/home/wayne/.vim/.vimrc	/^        let g:gitgutter_enabled = 1$/;"	v	language:Vim
+g:neocomplete#enable_at_startup	/home/wayne/.vim/.vimrc	/^        let g:neocomplete#enable_at_startup = 1$/;"	v	language:Vim
+g:neocomplete#enable_auto_select	/home/wayne/.vim/.vimrc	/^        let g:neocomplete#enable_auto_select = 1$/;"	v	language:Vim
+g:neocomplete#enable_smart_case	/home/wayne/.vim/.vimrc	/^        let g:neocomplete#enable_smart_case = 1$/;"	v	language:Vim
+g:neocomplete#sources#syntax#min_keyword_length	/home/wayne/.vim/.vimrc	/^        let g:neocomplete#sources#syntax#min_keyword_length = 3$/;"	v	language:Vim
+g:rails_menu	/home/wayne/.vim/.vimrc	/^        let g:rails_menu = 0$/;"	v	language:Vim
+g:solarized_termcolors	/home/wayne/.vim/.vimrc	/^            let g:solarized_termcolors=256$/;"	v	language:Vim
+g:solarized_termtrans	/home/wayne/.vim/.vimrc	/^            let g:solarized_termtrans=1$/;"	v	language:Vim
+g:syntastic_aggregate_errors	/home/wayne/.vim/.vimrc	/^        let g:syntastic_aggregate_errors = 1$/;"	v	language:Vim
+g:syntastic_always_populate_loc_list	/home/wayne/.vim/.vimrc	/^        let g:syntastic_always_populate_loc_list = 1$/;"	v	language:Vim
+g:syntastic_auto_loc_list	/home/wayne/.vim/.vimrc	/^        let g:syntastic_auto_loc_list = 1$/;"	v	language:Vim
+g:syntastic_check_on_open	/home/wayne/.vim/.vimrc	/^        let g:syntastic_check_on_open = 0$/;"	v	language:Vim
+g:syntastic_check_on_wq	/home/wayne/.vim/.vimrc	/^        let g:syntastic_check_on_wq = 1$/;"	v	language:Vim
+g:syntastic_eruby_ruby_quiet_messages	/home/wayne/.vim/.vimrc	/^        let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'possibly useless use of a variable in void context'}$/;"	v	language:Vim
+g:syntastic_lua_checkers	/home/wayne/.vim/.vimrc	/^        let g:syntastic_lua_checkers = ["luac", "luacheck"]$/;"	v	language:Vim
+g:syntastic_lua_luacheck_args	/home/wayne/.vim/.vimrc	/^        let g:syntastic_lua_luacheck_args = "--no-unused-args"$/;"	v	language:Vim
+g:tagbar_type_puppet	/home/wayne/.vim/.vimrc	/^        let g:tagbar_type_puppet = {$/;"	v	language:Vim
+iCanHazVundle	/home/wayne/.vim/.vimrc	/^        let iCanHazVundle=0$/;"	v	language:Vim
+iCanHazVundle	/home/wayne/.vim/.vimrc	/^    let iCanHazVundle=1$/;"	v	language:Vim
+jj	/home/wayne/.vim/.vimrc	/^        inoremap jj <ESC>$/;"	m	language:Vim
+json_autocmd	/home/wayne/.vim/.vimrc	/^        augroup json_autocmd$/;"	a	language:Vim
+mapleader	/home/wayne/.vim/.vimrc	/^        let mapleader = ","$/;"	v	language:Vim
+my_cr_function	/home/wayne/.vim/.vimrc	/^        function! s:my_cr_function()$/;"	f	language:Vim
+NERDTreeToggleInCurDir	/home/wayne/.vim/.vimrc	/^         function! NERDTreeToggleInCurDir()$/;"	f	language:Vim
+os	/home/wayne/.vim/.vimrc	/^    let os = substitute(system('uname'), "\\n", "", "")$/;"	v	language:Vim
+testgroup	/home/wayne/.vim/.vimrc	/^        augroup testgroup$/;"	a	language:Vim
+ToggleColorColumn	/home/wayne/.vim/.vimrc	/^            function ToggleColorColumn()$/;"	f	language:Vim
+ToggleList	/home/wayne/.vim/.vimrc	/^            function ToggleList()$/;"	f	language:Vim
+ToggleNumber	/home/wayne/.vim/.vimrc	/^            function ToggleNumber()$/;"	f	language:Vim
+ToggleRelNumber	/home/wayne/.vim/.vimrc	/^            function ToggleRelNumber()$/;"	f	language:Vim
+ToggleSolarizedBackground	/home/wayne/.vim/.vimrc	/^            function ToggleSolarizedBackground()$/;"	f	language:Vim
+ToggleWrap	/home/wayne/.vim/.vimrc	/^            function ToggleWrap()$/;"	f	language:Vim
+t_Co	/home/wayne/.vim/.vimrc	/^            let t_Co=256$/;"	v	language:Vim
+vundle_readme	/home/wayne/.vim/.vimrc	/^    let vundle_readme=expand('~\/.vim\/bundle\/vundle\/README.md')$/;"	v	language:Vim
+w!!	/home/wayne/.vim/.vimrc	/^        cmap w!! %!sudo tee > \/dev\/null %$/;"	m	language:Vim

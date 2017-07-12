@@ -530,6 +530,7 @@
                       \]
                     \}
     " }
+    if os != "FreeBSD"
     " neocomplete {
         " Disable AutoComplPop.
         let g:acp_enableAtStartup = 0
@@ -576,6 +577,7 @@
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     " }
+    endif
 " }
 
 " Conditionals {
