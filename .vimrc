@@ -41,7 +41,7 @@
 " }
 
 " Operating System Specific {
-    "let os = substitute(system('uname'), "\n", "", "")
+    let os = substitute(system('uname'), "\n", "", "")
     "if os == "FreeBSD"
     "elseif os == "Linux"
     "endif
@@ -66,7 +66,9 @@
     "
     " easymotion: mainly used for highlighting search results
     Plugin 'Lokaltog/vim-easymotion'
-    Plugin 'Shougo/neocomplete'
+    if os != "FreeBSD"
+      Plugin 'Shougo/neocomplete'
+    endif
     Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'ciaranm/securemodelines'
