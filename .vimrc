@@ -34,10 +34,9 @@
     set backspace=indent,eol,start
     "Don't use swap files
     set noswapfile
-
-    set t_RV=
     "Use this specific term env
     set term=xterm-256color
+    set t_RV=
 " }
 
 " Operating System Specific {
