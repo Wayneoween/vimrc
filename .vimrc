@@ -96,6 +96,7 @@
 
     " Styling
     Plugin 'altercation/vim-colors-solarized'
+    Plugin 'dhruvasagar/vim-table-mode'
     Plugin 'godlygeek/tabular'
     Plugin 'mhinz/vim-startify'
     Plugin 'nathanaelkane/vim-indent-guides'
@@ -105,6 +106,7 @@
     " Experimental
     Plugin 'xolox/vim-misc'
     Plugin 'xolox/vim-easytags'
+    Plugin 'christoomey/vim-tmux-navigator'
 
     if iCanHazVundle == 0
         echo "Installing Plugins, please ignore key map error messages"
