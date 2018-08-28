@@ -78,6 +78,7 @@
     Plugin 'chase/vim-ansible-yaml'
     Plugin 'elzr/vim-json'
     Plugin 'fatih/vim-go'
+    let g:go_version_warning = 0
     Plugin 'hail2u/vim-css3-syntax'
     Plugin 'jelera/vim-javascript-syntax'
     Plugin 'lepture/vim-jinja'
@@ -533,7 +534,7 @@
             au BufRead,BufNewFile *.ino,*.pde   set ft=arduino
             au BufRead,BufNewFile *.j2          set ft=jinja
             au BufRead,BufNewFile *.json        set ft=json
-            au BufRead,BufNewFile *.pp          set ft=puppet
+            au BufRead,BufNewFile *.pp          set ft=puppet expandtab
             au BufRead,BufNewFile *.sh.erb      set ft=sh
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au BufRead,BufNewFile Capfile       set ft=ruby
