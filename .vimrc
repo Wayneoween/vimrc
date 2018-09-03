@@ -86,6 +86,7 @@
     Plugin 'tpope/vim-endwise'
     Plugin 'tpope/vim-rails'
     Plugin 'vim-ruby/vim-ruby'
+    Plugin 'Townk/vim-autoclose'
 
     " Styling
     Plugin 'altercation/vim-colors-solarized'
@@ -195,7 +196,7 @@
         "Show unfinished commands
         set showcmd
         "No Bell
-        set noerrorbells visualbell
+        set noerrorbells visualbell t_vb=
         set mouse=
     " }
 " }
@@ -434,6 +435,13 @@
         " Decrease amount of executions
         "let g:gitgutter_eager = 0
     " }
+    " vim-go {
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_build_constraints = 1
+    " }
     " json-vim {
         augroup json_autocmd
             autocmd!
@@ -506,6 +514,9 @@
         " lua
         let g:syntastic_lua_checkers = ["luac", "luacheck"]
         let g:syntastic_lua_luacheck_args = "--no-unused-args"
+
+        " html
+        let syntastic_mode_map = { 'passive_filetypes': ['html'] }
     " }
     " tagbar {
         nmap <F9> :TagbarToggle<CR>
@@ -539,6 +550,8 @@
             au BufRead,BufNewFile .vimrc        set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
             au BufRead,BufNewFile Capfile       set ft=ruby
             au BufRead,BufNewFile Vagrantfile*  set ft=ruby
+            au BufRead,BufNewFile *.go          set ft=go
+            au BufRead,BufNewFile *.coffee      set ft=js
         " }
         " Filetype settings {
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
