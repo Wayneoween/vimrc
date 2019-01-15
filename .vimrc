@@ -50,65 +50,94 @@
 " vim-plug setup {
     call plug#begin('~/.vim/plugged')
 
-    " https://editorconfig.org plugin for vim
-    " https://vimawesome.com/plugin/editorconfig-vim
-    Plug 'editorconfig/editorconfig-vim'
+    " Styling of vim
+    " {
 
-    " file system explorer for vim
-    " https://vimawesome.com/plugin/nerdtree-red
-    Plug 'scrooloose/nerdtree'
+        " start screen for vim
+        " https://vimawesome.com/plugin/vim-startify
+        Plug 'mhinz/vim-startify'
 
-    " user-configurable modeline support for vim
-    " https://vimawesome.com/plugin/securemodelines
-    Plug 'ciaranm/securemodelines'
+        " Solarized Colorscheme for vim
+        " https://vimawesome.com/plugin/vim-colors-solarized-ours
+        Plug 'altercation/vim-colors-solarized'
 
-    " start screen for vim
-    " https://vimawesome.com/plugin/vim-startify
-    Plug 'mhinz/vim-startify'
+        " a nice statusline at the bottom for vim
+        " https://vimawesome.com/plugin/vim-airline-superman
+        Plug 'vim-airline/vim-airline'
 
-    " Solarized Colorscheme for vim
-    " https://vimawesome.com/plugin/vim-colors-solarized-ours
-    Plug 'altercation/vim-colors-solarized'
+        " theme repository for vim-airline
+        " https://vimawesome.com/plugin/vim-airline-themes
+        Plug 'vim-airline/vim-airline-themes'
 
-    " a nice statusline at the bottom for vim
-    " https://vimawesome.com/plugin/vim-airline-superman
-    Plug 'vim-airline/vim-airline'
+        " shows a git diff in the 'gutter' (sign column)
+        " https://vimawesome.com/plugin/vim-gitgutter
+        Plug 'airblade/vim-gitgutter'
 
-    " theme repository for vim-airline
-    " https://vimawesome.com/plugin/vim-airline-themes
-    Plug 'vim-airline/vim-airline-themes'
+    " }
 
-    " Asynchronous Lint Engine for vim
-    " https://vimawesome.com/plugin/ale
-    Plug 'w0rp/ale'
+    " Language Support
+    " {
 
-    " collection of language packs for vim
-    " https://vimawesome.com/plugin/vim-polyglot
-    Plug 'sheerun/vim-polyglot'
+        " Asynchronous Lint Engine for vim
+        " https://vimawesome.com/plugin/ale
+        Plug 'w0rp/ale'
 
-    " to comment stuff out in vim
-    " https://vimawesome.com/plugin/commentary-vim
-    Plug 'tpope/vim-commentary'
+        " collection of language packs for vim
+        " https://vimawesome.com/plugin/vim-polyglot
+        Plug 'sheerun/vim-polyglot'
 
-    " the best Git wrapper of all time
-    " https://vimawesome.com/plugin/fugitive-vim
-    Plug 'tpope/vim-fugitive'
+    " }
 
-    " surroundings: parentheses, brackets, quotes, XML tags
-    " https://vimawesome.com/plugin/surround-vim
-    Plug 'tpope/vim-surround'
+    " External Tool Wrapping
+    " {
 
-    " changes the working directory to the project root
-    " https://vimawesome.com/plugin/rooter
-    Plug 'airblade/vim-rooter'
+        " the best Git wrapper of all time
+        " https://vimawesome.com/plugin/fugitive-vim
+        Plug 'tpope/vim-fugitive'
 
-    " NERDTree showing git status flags
-    " https://vimawesome.com/plugin/nerdtree-git-plugin
-    Plug 'Xuyuanp/nerdtree-git-plugin'
+        " fzf-based commands and mappings for vim
+        " https://vimawesome.com/plugin/fzf-vim
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
 
-    " shows a git diff in the 'gutter' (sign column)
-    " https://vimawesome.com/plugin/vim-gitgutter
-    Plug 'airblade/vim-gitgutter'
+        " search tool
+        " https://vimawesome.com/plugin/ack-vim
+        Plug 'mileszs/ack.vim'
+
+    " }
+
+    " Features and enhancements
+    " {
+
+        " https://editorconfig.org plugin for vim
+        " https://vimawesome.com/plugin/editorconfig-vim
+        Plug 'editorconfig/editorconfig-vim'
+
+        " file system explorer for vim
+        " https://vimawesome.com/plugin/nerdtree-red
+        Plug 'scrooloose/nerdtree'
+
+        " user-configurable modeline support for vim
+        " https://vimawesome.com/plugin/securemodelines
+        Plug 'ciaranm/securemodelines'
+
+        " to comment stuff out in vim
+        " https://vimawesome.com/plugin/commentary-vim
+        Plug 'tpope/vim-commentary'
+
+        " surroundings: parentheses, brackets, quotes, XML tags
+        " https://vimawesome.com/plugin/surround-vim
+        Plug 'tpope/vim-surround'
+
+        " changes the working directory to the project root
+        " https://vimawesome.com/plugin/rooter
+        Plug 'airblade/vim-rooter'
+
+        " NERDTree showing git status flags
+        " https://vimawesome.com/plugin/nerdtree-git-plugin
+        Plug 'Xuyuanp/nerdtree-git-plugin'
+
+    " }
 
     " Initialize plugin system
     call plug#end()
