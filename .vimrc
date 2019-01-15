@@ -46,68 +46,72 @@
     "endif
 " }
 
-" Vundle with automatic setup {
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle..i."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#begin()
+" I chose to use vim-plug as a plugin manager (https://github.com/junegunn/vim-plug)
+" vim-plug setup {
+    call plug#begin('~/.vim/plugged')
 
-    Plugin 'gmarik/vundle'
+    " https://editorconfig.org plugin for vim
+    " https://vimawesome.com/plugin/editorconfig-vim
+    Plug 'editorconfig/editorconfig-vim'
 
-    " Enhanced usability
-    Plugin 'Xuyuanp/nerdtree-git-plugin'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'ciaranm/securemodelines'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/syntastic'
-    " I use this only for :Gblame :-)
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-surround'
-    Plugin 'airblade/vim-rooter'
+    " file system explorer for vim
+    " https://vimawesome.com/plugin/nerdtree-red
+    Plug 'scrooloose/nerdtree'
 
-    " Languages and related
-    Plugin 'chase/vim-ansible-yaml'
-    Plugin 'elzr/vim-json'
-    Plugin 'fatih/vim-go'
-    let g:go_version_warning = 0
-    Plugin 'hail2u/vim-css3-syntax'
-    Plugin 'jelera/vim-javascript-syntax'
-    Plugin 'lepture/vim-jinja'
-    Plugin 'rodjek/vim-puppet'
-    Plugin 'tpope/vim-endwise'
-    Plugin 'tpope/vim-rails'
-    Plugin 'vim-ruby/vim-ruby'
-    Plugin 'Townk/vim-autoclose'
+    " user-configurable modeline support for vim
+    " https://vimawesome.com/plugin/securemodelines
+    Plug 'ciaranm/securemodelines'
 
-    " Styling
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'dhruvasagar/vim-table-mode'
-    Plugin 'godlygeek/tabular'
-    Plugin 'mhinz/vim-startify'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
+    " start screen for vim
+    " https://vimawesome.com/plugin/vim-startify
+    Plug 'mhinz/vim-startify'
 
-    " Experimental
-    Plugin 'xolox/vim-misc'
-    Plugin 'xolox/vim-easytags'
+    " Solarized Colorscheme for vim
+    " https://vimawesome.com/plugin/vim-colors-solarized-ours
+    Plug 'altercation/vim-colors-solarized'
 
-    if iCanHazVundle == 0
-        echo "Installing Plugins, please ignore key map error messages"
-        echo ""
-        :PluginInstall
-    endif
+    " a nice statusline at the bottom for vim
+    " https://vimawesome.com/plugin/vim-airline-superman
+    Plug 'vim-airline/vim-airline'
 
-    call vundle#end()
-    filetype plugin indent on
+    " theme repository for vim-airline
+    " https://vimawesome.com/plugin/vim-airline-themes
+    Plug 'vim-airline/vim-airline-themes'
+
+    " Asynchronous Lint Engine for vim
+    " https://vimawesome.com/plugin/ale
+    Plug 'w0rp/ale'
+
+    " collection of language packs for vim
+    " https://vimawesome.com/plugin/vim-polyglot
+    Plug 'sheerun/vim-polyglot'
+
+    " to comment stuff out in vim
+    " https://vimawesome.com/plugin/commentary-vim
+    Plug 'tpope/vim-commentary'
+
+    " the best Git wrapper of all time
+    " https://vimawesome.com/plugin/fugitive-vim
+    Plug 'tpope/vim-fugitive'
+
+    " surroundings: parentheses, brackets, quotes, XML tags
+    " https://vimawesome.com/plugin/surround-vim
+    Plug 'tpope/vim-surround'
+
+    " changes the working directory to the project root
+    " https://vimawesome.com/plugin/rooter
+    Plug 'airblade/vim-rooter'
+
+    " NERDTree showing git status flags
+    " https://vimawesome.com/plugin/nerdtree-git-plugin
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+
+    " shows a git diff in the 'gutter' (sign column)
+    " https://vimawesome.com/plugin/vim-gitgutter
+    Plug 'airblade/vim-gitgutter'
+
+    " Initialize plugin system
+    call plug#end()
 " }
 
 " General {
