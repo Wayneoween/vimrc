@@ -465,6 +465,16 @@
         let b:ale_linters = {'yaml': ['yamllint']}
         " diable yaml line warning
         let g:ale_yaml_yamllint_options='-d "{extends: relaxed, rules: {line-length: disable}}"'
+        " Set this. Airline will handle the rest.
+        let g:airline#extensions#ale#enabled = 1
+    " }
+    " ack.vim {
+        if executable('ag')
+            nnoremap <C-p> :Files<Cr>
+            nnoremap <C-g> :Ag<Cr>
+            let g:ackprg = 'ag --vimgrep'
+            " let g:ackprg = 'ag --nogroup --nocolor --column'
+        endif
     " }
     " vim-gitgutter {
         let g:gitgutter_enabled = 1
@@ -499,6 +509,7 @@
          " Autostart NERDtree when opening an empty buffer
          "autocmd StdinReadPre * let s:std_in=1
          "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+         let g:NERDTreeNodeDelimiter = "\u00a0"
 
          " Close vim if NERDtree is only window
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -611,3 +622,10 @@
         " }
     endif
 " }
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
