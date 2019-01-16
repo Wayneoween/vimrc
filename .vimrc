@@ -451,11 +451,20 @@
     " }
 " }
 " Settings for addons {
-    " ctrlp {
-        let g:ctrlp_extensions = ['tag', 'mixed']
+    " fzf.vim {
+        nnoremap <C-p> :Files<CR>
     " }
-    " ctrlp {
-        let g:rails_menu = 0
+    " ALE {
+        nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+        nmap <silent> <C-j> <Plug>(ale_next_wrap)
+        let g:ale_open_list = 1
+        let g:ale_lint_on_text_changed = 1
+        let g:ale_lint_on_enter = 1
+        let g:ale_lint_on_save = 1
+
+        let b:ale_linters = {'yaml': ['yamllint']}
+        " diable yaml line warning
+        let g:ale_yaml_yamllint_options='-d "{extends: relaxed, rules: {line-length: disable}}"'
     " }
     " vim-gitgutter {
         let g:gitgutter_enabled = 1
