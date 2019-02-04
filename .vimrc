@@ -86,6 +86,10 @@
         " https://vimawesome.com/plugin/vim-polyglot
         Plug 'sheerun/vim-polyglot'
 
+        " Make vim more puppet friendly
+        " https://github.com/rodjek/vim-puppet
+        Plug 'rodjek/vim-puppet'
+
     " }
 
     " External Tool Wrapping
