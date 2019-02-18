@@ -468,7 +468,7 @@
 
         let b:ale_linters = {'yaml': ['yamllint']}
         " diable yaml line warning
-        let g:ale_yaml_yamllint_options='-d "{extends: relaxed, rules: {line-length: disable}}"'
+        let g:ale_yaml_yamllint_options='-c ~/.config/yamllint/config'
         " Set this. Airline will handle the rest.
         let g:airline#extensions#ale#enabled = 1
     " }
