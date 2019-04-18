@@ -15,7 +15,7 @@
     "Use vim defaults
     set nocompatible
     "Disable filetype detection during init
-    filetype off
+    filetype plugin on
     "Enable Syntax highlighting
     syntax enable
     "Explicitly define xterm as environment
@@ -612,7 +612,8 @@
         " }
         " Filetype settings {
             au FileType arduino                 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-            au FileType eruby,ruby,yaml,css,dot set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType eruby,ruby              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+            au FileType scss,yaml,css,dot       set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
             au FileType haskell                 set tabstop=4 softtabstop=2 shiftwidth=2 expandtab
             au FileType html                    set tabstop=2 softtabstop=2 shiftwidth=2 smartindent expandtab
             au FileType javascript              set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
