@@ -90,6 +90,10 @@
         " https://github.com/rodjek/vim-puppet
         Plug 'rodjek/vim-puppet'
 
+        " GoLang Support
+        " https://github.com/fatih/vim-go
+        Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
     " }
 
     " External Tool Wrapping
