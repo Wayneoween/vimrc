@@ -41,9 +41,13 @@
 
 " Operating System Specific {
     let os = substitute(system('uname'), "\n", "", "")
-    "if os == "FreeBSD"
-    "elseif os == "Linux"
-    "endif
+    if os == "FreeBSD"
+    elseif os == "Linux"
+    elseif os == "Darwin"
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
 " }
 
 " I chose to use vim-plug as a plugin manager (https://github.com/junegunn/vim-plug)
