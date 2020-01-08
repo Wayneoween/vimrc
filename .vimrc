@@ -520,6 +520,7 @@
          "autocmd StdinReadPre * let s:std_in=1
          "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
          let g:NERDTreeNodeDelimiter = "\u00a0"
+         let g:NERDTreeHijackNetrw = 0
 
          " Close vim if NERDtree is only window
          autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
