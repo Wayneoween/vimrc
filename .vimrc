@@ -116,6 +116,9 @@
         " https://vimawesome.com/plugin/ack-vim
         Plug 'mileszs/ack.vim'
 
+        " rubocop
+        Plug 'ngmy/vim-rubocop'
+
     " }
 
     " Features and enhancements
