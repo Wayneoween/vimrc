@@ -96,7 +96,7 @@
 
         " GoLang Support
         " https://github.com/fatih/vim-go
-        Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+        " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " }
 
