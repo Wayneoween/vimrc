@@ -107,6 +107,9 @@
         " https://vimawesome.com/plugin/fugitive-vim
         Plug 'tpope/vim-fugitive'
 
+        " a git commit browser using vim-fugitive
+        Plug 'junegunn/gv.vim'
+
         " fzf-based commands and mappings for vim
         " https://vimawesome.com/plugin/fzf-vim
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
